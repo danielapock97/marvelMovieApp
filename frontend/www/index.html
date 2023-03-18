@@ -35,22 +35,45 @@
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/bootstrap.css">
-        <title>Hello World</title>
+        <title>Marvel Movie App</title>
+        <script src="cordova.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/index.js"></script>
     </head>
+
     <body>
 
-    <nav>
-        <button class="button-login" type="button">Login</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Marvel Movie App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Dani</a></li>
+                            <li><a class="dropdown-item" href="#">Resh</a></li>
+                            <li><a class="dropdown-item" href="#">Lara</a></li>
+                            <li><a class="dropdown-item" href="#">Erek</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-<!--        <div class="app">-->
+
+    <!--        <div class="app">-->
 <!--            <h1>Apache Cordova</h1>-->
 <!--            <div id="deviceready" class="blink">-->
 <!--                <p class="event listening">Connecting to Device</p>-->
 <!--                <p class="event received">Device is Ready</p>-->
 <!--            </div>-->
 <!--        </div>-->
-        <script src="cordova.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/index.js"></script>
+
     </body>
 </html>
