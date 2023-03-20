@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   const movie = new Movie({
     title: req.body.title,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    imageUrl: req.body.imageUrl
   });
 
   // Save Movie in the database
@@ -124,20 +124,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all Movies."
-      });
-    });
-};
-
-// Find all published Movies
-exports.findAllPublished = (req, res) => {
-  Movie.find({ published: true })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Movies."
       });
     });
 };

@@ -11,9 +11,11 @@ exports.create = (req, res) => {
 
   // Create a Review
   const review = new Review({
+    movie_id: req.body.movie_id,
+    user_id: req.body.user_id,
     title: req.body.title,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    stars: req.body.stars
   });
 
   // Save Review in the database
@@ -124,20 +126,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all Reviews."
-      });
-    });
-};
-
-// Find all published Reviews
-exports.findAllPublished = (req, res) => {
-  Review.find({ published: true })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Reviews."
       });
     });
 };
