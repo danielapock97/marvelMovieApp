@@ -11,8 +11,8 @@ exports.create = (req, res) => {
 
   // Create a Review
   const review = new Review({
-    movie_id: req.body.movie_id,
-    user_id: req.body.user_id,
+    movie: req.body.movie_id,
+    user: req.body.user_id,
     title: req.body.title,
     description: req.body.description,
     stars: req.body.stars

@@ -1,9 +1,14 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            movie_id: Number,
-            user_id: Number,
-            title: String,
+            movie: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Movie"
+            },
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "user"
+            },            title: String,
             description: String,
             stars: Number
         },
