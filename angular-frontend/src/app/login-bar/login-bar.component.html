@@ -7,9 +7,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" [class.menu-open]="isMenuOpen">
-      <button mat-menu-item>Profile</button>
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Logout</button>
+      <button mat-menu-item  (click)="openLogin()">Login</button>
     </mat-menu>
   </div>
 </mat-toolbar>

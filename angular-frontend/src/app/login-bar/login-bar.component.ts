@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
@@ -9,7 +9,14 @@ import {MatSidenav} from "@angular/material/sidenav";
 export class LoginBarComponent {
   isMenuOpen = false;
 
+  @Output()
+  onOpenLogin = new EventEmitter();
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  openLogin(){
+  this.onOpenLogin.emit();
   }
 }

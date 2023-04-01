@@ -14,7 +14,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 import { LoginFormComponent } from './login-form/login-form.component';
-
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,12 @@ import { LoginFormComponent } from './login-form/login-form.component';
     LoginFormComponent
   ],
   imports: [
+    FontAwesomeModule,
     FormsModule,
     MatMenuModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatFormFieldModule,
@@ -39,4 +47,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faTimes);
+  }
+}
