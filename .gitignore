@@ -27,6 +27,7 @@
 /frontend/plugins/
 /frontend/platforms/
 
+
 #backend ignored files
 
 # Default ignored files
@@ -37,3 +38,5 @@
 
 /backend/node_modules/
 
+#Ingore angular build result
+/frontend/www
