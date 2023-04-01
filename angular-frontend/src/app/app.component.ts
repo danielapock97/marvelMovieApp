@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-frontend';
+
+  isLoginOpen = false;
+
+  showLogin() {
+    this.isLoginOpen = true;
+  }
+
+  hideLogin() {
+    this.isLoginOpen = false;
+  }
 }

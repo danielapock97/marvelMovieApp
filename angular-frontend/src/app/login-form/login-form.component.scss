@@ -1,0 +1,16 @@
+.login-card {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    margin-top: 50px;
+  }
+}
+
+.closeButton {
+  position: relative;
+  margin-left: auto;
+}

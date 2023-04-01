@@ -1,3 +1,8 @@
 
-<app-login-bar></app-login-bar>
+<div>
+<app-login-bar (onOpenLogin)="showLogin()" ></app-login-bar>
+<div  *ngIf="isLoginOpen === true" style="position: absolute; top: 5px;">
+  <app-login-form (onCloseLogin)="hideLogin()"></app-login-form>
+</div>
+</div>
 
