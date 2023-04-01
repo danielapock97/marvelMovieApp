@@ -12,14 +12,19 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
+import { LoginFormComponent } from './login-form/login-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginBarComponent
+    LoginBarComponent,
+    LoginFormComponent
   ],
   imports: [
     FormsModule,
+    MatMenuModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatFormFieldModule,

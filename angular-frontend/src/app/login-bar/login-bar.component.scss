@@ -1,21 +1,28 @@
-/* Hier kannst du das Aussehen der Navbar mit CSS anpassen */
-
-.navbar-title {
-  font-size: 20px;
-  font-weight: bold;
+/* topbar.component.css */
+.topbar {
+  height: 56px;
+  width: 100%;
 }
 
-.navbar-fill {
-  flex: 1 1 auto;
-}
-
-.navbar-login {
+.left {
   display: flex;
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  .navbar-login {
-    display: none;
-  }
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.dropdown {
+  margin-top: 56px;
 }
