@@ -18,13 +18,15 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import {faStar, faTimes} from '@fortawesome/free-solid-svg-icons';
+import { MainViewListComponent } from './main-view-list/main-view-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginBarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    MainViewListComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -50,5 +52,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(faTimes);
+    library.addIcons(faStar);
   }
 }

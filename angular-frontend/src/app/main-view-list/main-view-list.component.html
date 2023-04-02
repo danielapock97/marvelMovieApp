@@ -1,0 +1,9 @@
+<mat-list>
+  <mat-list-item *ngFor="let item of items" style="height: 250px">
+    <img style="height: 175px; object-fit: contain" mat-list-avatar [src]="item.imageUrl" alt="{{ item.title }} Image">
+    <h2 mat-line>{{ item.title }}</h2>
+    <div mat-list-avatar>
+      <fa-icon *ngFor="let star of stars(item.rating)" [icon]="['fas', 'star']"></fa-icon>
+    </div>
+  </mat-list-item>
+</mat-list>
