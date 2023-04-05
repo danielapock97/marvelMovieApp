@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {UserInfo} from "./entities/user-info";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,10 @@ import {UserInfo} from "./entities/user-info";
 export class AppComponent {
   title = 'angular-frontend';
 
-  currentUser: UserInfo | undefined = undefined;
+  public static currentUser: UserInfo | undefined = undefined;
+
+  constructor(private router: Router ) {
+  }
 
   isLoginOpen = false;
 
@@ -22,15 +26,24 @@ export class AppComponent {
   }
 
   showView(view: string){
-
+    this.router.navigate(['/'+ view]);
   }
 
   setUser(user: UserInfo) {
-    this.currentUser = user;
+    AppComponent.currentUser = user;
+    if(user.role === "admin") {
+      this.showView('admin');
+    } else {
+      this.showView('main');
+    }
+  }
+
+  currentUser(){
+    return AppComponent.currentUser;
   }
 
   logoutUser() {
-    this.currentUser = undefined;
+    AppComponent.currentUser = undefined;
     this.showView('start');
   }
 }

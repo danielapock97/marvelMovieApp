@@ -20,13 +20,19 @@ import {MatButtonModule} from "@angular/material/button";
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {faStar, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { MainViewListComponent } from './main-view-list/main-view-list.component';
+import { ViewMainComponent } from './view-main/view-main.component';
+import { ViewStartComponent } from './view-start/view-start.component';
+import { ViewAdminComponent } from './view-admin/view-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginBarComponent,
     LoginFormComponent,
-    MainViewListComponent
+    MainViewListComponent,
+    ViewMainComponent,
+    ViewStartComponent,
+    ViewAdminComponent
   ],
   imports: [
     FontAwesomeModule,

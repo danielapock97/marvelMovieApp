@@ -26,8 +26,10 @@ export class LoginFormComponent {
     if (this.selectedUser && this.password) {
       if (this.selectedUser === 'Moderator' && this.password === 'admin') {
         this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser, 'admin'));
+        this.onCloseLogin.emit();
       } else if (this.selectedUser !== 'Moderator' && this.password === '123') {
         this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser, 'user'));
+        this.onCloseLogin.emit();
       }
     } else {
       console.log('Bitte Benutzername und Passwort eingeben!');

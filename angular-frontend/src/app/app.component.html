@@ -1,17 +1,12 @@
 
 <div style="position: fixed; top:0; height: 56px; width: 100%">
-<app-login-bar [currentUser]="currentUser" (onOpenLogin)="showLogin()" (onSwitchView)="showView($event)" (onLogout)="logoutUser()" ></app-login-bar>
+<app-login-bar [currentUser]="currentUser()" (onOpenLogin)="showLogin()" (onSwitchView)="showView($event)" (onLogout)="logoutUser()" ></app-login-bar>
 </div>
 <div  *ngIf="isLoginOpen === true" style="position: absolute; top: 56px; background: white; z-index: 100;">
   <app-login-form (onCloseLogin)="hideLogin()" (onSuccessfulLogin)="setUser($event)" ></app-login-form>
 </div>
 <div style="position: absolute; top:56px; height: calc(100% - 56px); width: 100%; overflow: auto; z-index: 10;">
   <router-outlet></router-outlet>
-  <app-main-view-list [items]="[
-  { imageUrl: 'https://example.com/image1.jpg', title: 'Item 1', rating: 4 },
-  { imageUrl: 'https://example.com/image2.jpg', title: 'Item 2', rating: 3 },
-  { imageUrl: 'https://example.com/image3.jpg', title: 'Item 3', rating: 5 }
-]"></app-main-view-list>
 </div>
 
 
