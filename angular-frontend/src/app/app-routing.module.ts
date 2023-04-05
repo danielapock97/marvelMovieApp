@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {ViewStartComponent} from "./view-start/view-start.component";
 import {ViewMainComponent} from "./view-main/view-main.component";
 import {ViewAdminComponent} from "./view-admin/view-admin.component";
+import {ViewDetailComponent} from "./view-detail/view-detail.component";
 
 const routes: Routes = [
   {path: 'start', component: ViewStartComponent},
   {path: 'main', component: ViewMainComponent},
   {path: 'admin', component: ViewAdminComponent},
+  {path: 'details/:id', component: ViewDetailComponent},
   {path: '', redirectTo: '/start', pathMatch: 'full'}];
 
 @NgModule({

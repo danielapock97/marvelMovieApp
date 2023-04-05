@@ -18,4 +18,5 @@ interface RatingItem {
   imageUrl: string;
   title: string;
   rating: number;
+  id: number;
 }

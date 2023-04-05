@@ -26,16 +26,17 @@ export class AppComponent {
   }
 
   showView(view: string){
-    this.router.navigate(['/'+ view]);
+    if(AppComponent.currentUser) {
+      this.router.navigate(['/'+ view]);
+    }
+    else {
+      this.router.navigate(['/start']);
+    }
   }
 
   setUser(user: UserInfo) {
     AppComponent.currentUser = user;
-    if(user.role === "admin") {
-      this.showView('admin');
-    } else {
-      this.showView('main');
-    }
+    this.showView('main');
   }
 
   currentUser(){

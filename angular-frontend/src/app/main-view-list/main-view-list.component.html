@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let item of items" style="height: 250px">
+  <mat-list-item *ngFor="let item of items" style="height: 250px" [routerLink]="['/details', item.id]">
     <img style="height: 175px; object-fit: contain" mat-list-avatar [src]="item.imageUrl" alt="{{ item.title }} Image">
     <h2 mat-line>{{ item.title }}</h2>
     <div mat-list-avatar>

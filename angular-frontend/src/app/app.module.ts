@@ -23,6 +23,7 @@ import { MainViewListComponent } from './main-view-list/main-view-list.component
 import { ViewMainComponent } from './view-main/view-main.component';
 import { ViewStartComponent } from './view-start/view-start.component';
 import { ViewAdminComponent } from './view-admin/view-admin.component';
+import { ViewDetailComponent } from './view-detail/view-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ViewAdminComponent } from './view-admin/view-admin.component';
     MainViewListComponent,
     ViewMainComponent,
     ViewStartComponent,
-    ViewAdminComponent
+    ViewAdminComponent,
+    ViewDetailComponent
   ],
   imports: [
     FontAwesomeModule,
