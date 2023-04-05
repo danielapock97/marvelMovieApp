@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UserInfo} from "./entities/user-info";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-frontend';
 
+  currentUser: UserInfo | undefined = undefined;
+
   isLoginOpen = false;
 
   showLogin() {
@@ -16,5 +19,18 @@ export class AppComponent {
 
   hideLogin() {
     this.isLoginOpen = false;
+  }
+
+  showView(view: string){
+
+  }
+
+  setUser(user: UserInfo) {
+    this.currentUser = user;
+  }
+
+  logoutUser() {
+    this.currentUser = undefined;
+    this.showView('start');
   }
 }

@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {UserInfo} from "../entities/user-info";
 
 @Component({
   selector: 'app-login-form',
@@ -14,6 +15,9 @@ export class LoginFormComponent {
   @Output()
   onCloseLogin = new EventEmitter();
 
+  @Output()
+  onSuccessfulLogin =  new EventEmitter<UserInfo>();
+
   cancelLogin() {
     this.onCloseLogin.emit();
   }
@@ -21,11 +25,9 @@ export class LoginFormComponent {
   onLogin() {
     if (this.selectedUser && this.password) {
       if (this.selectedUser === 'Moderator' && this.password === 'admin') {
-        console.log('Login erfolgreich!');
-        // Hier könnte man den Benutzer zur nächsten Seite weiterleiten oder eine andere Aktion ausführen
-      } else {
-        console.log('Benutzername oder Passwort falsch!');
-        // Hier könnte man eine Fehlermeldung anzeigen oder andere Aktionen ausführen
+        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser, 'admin'));
+      } else if (this.selectedUser !== 'Moderator' && this.password === '123') {
+        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser, 'user'));
       }
     } else {
       console.log('Bitte Benutzername und Passwort eingeben!');
