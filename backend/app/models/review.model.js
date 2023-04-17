@@ -1,6 +1,7 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
+            contentHash: String,
             movie: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Movie"
@@ -8,7 +9,8 @@ module.exports = mongoose => {
             user: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "user"
-            },            title: String,
+            },
+            title: String,
             description: String,
             stars: Number
         },
