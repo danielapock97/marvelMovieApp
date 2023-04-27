@@ -35,6 +35,8 @@ require("./app/routes/movie.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/review.routes")(app);
 
+// Todo: Iniziatlize database with 3 movies, 2 users and 3 reviews
+
 // set port, listen for requests
 const PORT = 8080;
 app.listen(PORT, () => {

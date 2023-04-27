@@ -1,3 +1,8 @@
 <p>Detail-Ansicht</p>
 
 <p> Gewählter Film ID: {{movieId}}</p>
+<p> Titel: {{movie?.title}}</p>
+<p> Beschreibung: {{movie?.description}}</p>
+<div mat-list-avatar>
+  <fa-icon *ngFor="let star of stars" [icon]="['fas', 'star']"></fa-icon>
+</div>
