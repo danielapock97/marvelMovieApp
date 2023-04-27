@@ -3,7 +3,7 @@ module.exports = mongoose => {
         {
             title: String,
             description: String,
-            imageUrl: String
+            rating: Number
         },
         { timestamps: true }
     );

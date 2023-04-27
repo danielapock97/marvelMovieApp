@@ -32,8 +32,7 @@ export class LoginFormComponent implements OnInit{
     this.userService.getUsers()
       .subscribe(
         res => (this.users = res),
-        error => (alert(JSON.stringify("THERE \n" + JSON.stringify(error)))),
-        () => alert("Request completed")
+        error => (alert(JSON.stringify(JSON.stringify(error))))
       )
   }
 
@@ -49,7 +48,6 @@ export class LoginFormComponent implements OnInit{
       }
     } else {
       alert('Bitte Benutzername und Passwort eingeben!');
-      // Hier könnte man eine Fehlermeldung anzeigen oder andere Aktionen ausführen
     }
   }
 }
