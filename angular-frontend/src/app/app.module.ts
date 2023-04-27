@@ -24,6 +24,7 @@ import { ViewMainComponent } from './view-main/view-main.component';
 import { ViewStartComponent } from './view-start/view-start.component';
 import { ViewAdminComponent } from './view-admin/view-admin.component';
 import { ViewDetailComponent } from './view-detail/view-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ViewDetailComponent } from './view-detail/view-detail.component';
     MatListModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

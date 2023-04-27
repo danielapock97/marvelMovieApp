@@ -1,14 +1,17 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserInfo} from "../entities/user-info";
+import {UserService} from "../services/user.service";
+import {User} from "../entities/user";
+import {catchError} from "rxjs";
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent {
-  users = ['Lara', 'Dani', 'Resh', 'Erek', 'Moderator'];
-  selectedUser!: string;
+export class LoginFormComponent implements OnInit{
+  users: User[]= [];
+  selectedUser!: User;
   password!: string;
   hide = true;
 
@@ -18,21 +21,34 @@ export class LoginFormComponent {
   @Output()
   onSuccessfulLogin =  new EventEmitter<UserInfo>();
 
+  constructor(private userService: UserService) {
+  }
+
   cancelLogin() {
     this.onCloseLogin.emit();
   }
 
+  ngOnInit() {
+    this.userService.getUsers()
+      .subscribe(
+        res => (this.users = res),
+        error => (alert(JSON.stringify("THERE \n" + JSON.stringify(error)))),
+        () => alert("Request completed")
+      )
+  }
+
   onLogin() {
+  console.log(this.selectedUser)
     if (this.selectedUser && this.password) {
-      if (this.selectedUser === 'Moderator' && this.password === 'admin') {
-        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser, 'admin'));
+      if (this.selectedUser.role === 'moderator' && this.password === 'admin') {
+        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser.username, this.selectedUser.role));
         this.onCloseLogin.emit();
-      } else if (this.selectedUser !== 'Moderator' && this.password === '123') {
-        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser, 'user'));
+      } else if (this.selectedUser.role !== 'moderator' && this.password === '123') {
+        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser.username, this.selectedUser.role));
         this.onCloseLogin.emit();
       }
     } else {
-      console.log('Bitte Benutzername und Passwort eingeben!');
+      alert('Bitte Benutzername und Passwort eingeben!');
       // Hier könnte man eine Fehlermeldung anzeigen oder andere Aktionen ausführen
     }
   }

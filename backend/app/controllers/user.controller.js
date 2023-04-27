@@ -32,14 +32,17 @@ exports.create = (req, res) => {
 
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
-  const username = req.query.username;
-  var condition = username ? { title: { $regex: new RegExp(username), $options: "i" } } : {};
-
-  User.find(condition)
+console.log("test")
+  User.find()
     .then(data => {
+    console.log("success")
+
+//    res.writeHead(200);
       res.send(data);
     })
     .catch(err => {
+    console.log("failure")
+
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving users."
