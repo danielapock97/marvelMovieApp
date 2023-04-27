@@ -4,7 +4,9 @@
   "description": "Node.js Restful CRUD API with Node.js, Express and MongoDB",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "initDbData": "node initDbData.js"
   },
   "keywords": [
     "nodejs",
@@ -20,6 +22,7 @@
     "crypto-js": "^4.1.1",
     "express": "^4.18.2",
     "mongoose": "^6.8.1",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "request": "^2.88.2"
   }
 }
