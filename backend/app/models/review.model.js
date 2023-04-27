@@ -1,18 +1,17 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            contentHash: String,
-            movie: {
+            movieID: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Movie"
             },
-            user: {
+            userID: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "user"
             },
             title: String,
             description: String,
-            stars: Number
+            rating: Number
         },
         { timestamps: true }
     );

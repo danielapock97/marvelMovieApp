@@ -32,10 +32,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Movies from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
-
-  Movie.find(condition)
+  Movie.find()
     .then(data => {
       res.send(data);
     })
@@ -73,6 +70,7 @@ exports.update = (req, res) => {
   }
 
   const id = req.params.id;
+  const updatedAt = req.params.updatedAt;
 
   Movie.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
@@ -80,7 +78,15 @@ exports.update = (req, res) => {
         res.status(404).send({
           message: `Cannot update Movie with id=${id}. Maybe Movie was not found!`
         });
-      } else res.send({ message: "Movie was updated successfully." });
+      } else  {
+        if (updatedAt !== (new Date(data.updatedAt))) {
+          res.status(423).send({message: "Das Review wurde kürzlich bearbeitet."})
+        } else {
+          res.send({ message: "Movie was updated successfully." });
+        }
+      }
+
+
     })
     .catch(err => {
       res.status(500).send({

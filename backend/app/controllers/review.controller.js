@@ -8,20 +8,14 @@ exports.create = (req, res) => {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
-  var cryptoJS = require("crypto-js");
-  // console.log(cryptoJS)
 
   // Create a Review
-  newContentHash = cryptoJS.AES.encrypt(JSON.stringify(req.body), "123").toString();
-  console.log(newContentHash)
-
   const review = new Review({
-    contentHash: newContentHash,
-    movie: req.body.movie_id,
-    user: req.body.user_id,
+    movieID: req.body.movieID,
+    userID: req.body.userID,
     title: req.body.title,
     description: req.body.description,
-    stars: req.body.stars
+    rating: req.body.rating
   });
 
   // Save Review in the database
@@ -40,8 +34,6 @@ exports.create = (req, res) => {
 
 // Retrieve all Reviews from the database.
 exports.findAll = (req, res) => {
-  const contentHash = req.query.contentHash;
-  var condition = contentHash ? { contentHash: { $regex: new RegExp(contentHash), $options: "i" } } : {};
 
 // hier fehlt noch die Anpassung, was passiert, wenn das Review nicht mehr exisitert oder vorher schon bearbeitet wurde.
   Review.find(condition)
