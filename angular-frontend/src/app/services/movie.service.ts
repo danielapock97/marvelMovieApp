@@ -7,7 +7,7 @@ import {Movie} from "../entities/movie";
   providedIn: 'root'
 })
 export class MovieService {
-  private apiUrl = 'http://192.168.1.116:8080/moviess'
+  private apiUrl = 'http://10.0.2.2:8080/moviess'
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -16,7 +16,7 @@ export class MovieService {
   };
   constructor(private httpClient: HttpClient) {
     if (navigator.userAgent.includes("Android")) {
-      this.apiUrl = "http://192.168.1.116:8080"
+      this.apiUrl = "http://10.0.2.2:8080"
     } else {
       this.apiUrl = "http://localhost:8080"
     }

@@ -79,11 +79,7 @@ exports.update = (req, res) => {
           message: `Cannot update Movie with id=${id}. Maybe Movie was not found!`
         });
       } else  {
-        if (updatedAt !== (new Date(data.updatedAt))) {
-          res.status(423).send({message: "Das Review wurde kürzlich bearbeitet."})
-        } else {
           res.send({ message: "Movie was updated successfully." });
-        }
       }
 
 

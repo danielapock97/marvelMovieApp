@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-var cryptoJS = require("crypto-js");
 
 const app = express();
 
@@ -34,8 +33,6 @@ app.get("/", (req, res) => {
 require("./app/routes/movie.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/review.routes")(app);
-
-// Todo: Iniziatlize database with 3 movies, 2 users and 3 reviews
 
 // set port, listen for requests
 const PORT = 8080;

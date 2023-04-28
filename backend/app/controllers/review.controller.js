@@ -81,7 +81,12 @@ exports.update = (req, res) => {
         res.status(404).send({
           message: `Cannot update Review with id=${id}. Maybe Review was not found!`
         });
-      } else res.send({ message: "Review was updated successfully." });
+      } else
+      if (updatedAt !== (new Date(data.updatedAt))) {
+        res.status(409).send({message: "Conflict."})
+      } else {
+        res.status(200).send({ message: "Review was updated successfully." });
+      }
     })
     .catch(err => {
       res.status(500).send({
