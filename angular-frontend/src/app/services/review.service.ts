@@ -7,11 +7,12 @@ import {Review} from "../entities/review";
   providedIn: 'root'
 })
 export class ReviewService {
-  private apiUrl = 'http://10.0.2.2:8080/users'
+  private apiUrl = 'http://10.0.2.2:8080/reviews'
 
   private httpOptions = {
     headers: new HttpHeaders({
       'Accept': '**/**',
+      'Content-Type': 'application/json',
     }),
   };
   constructor(private httpClient: HttpClient) {
@@ -21,14 +22,28 @@ export class ReviewService {
       this.apiUrl = "http://localhost:8080"
     }
 
-    this.apiUrl += "/users"
+    this.apiUrl += "/reviews"
   }
 
-  getUsers(): Observable<Review[]> {
+  getReviews(): Observable<Review[]> {
     return this.httpClient.get<Review[]>(this.apiUrl, this.httpOptions)
   }
 
-  getUserById(id: number): Observable<Review> {
-    return this.httpClient.get<Review>(this.apiUrl + "/" + id)
+  getReviewById(id: string): Observable<Review> {
+    return this.httpClient.get<Review>(this.apiUrl + "/" + id, this.httpOptions)
+  }
+
+  post(review: Review): Observable<Review> {
+    return this.httpClient.post<Review>(this.apiUrl, review, this.httpOptions)
+  }
+
+  put(review: Review): Observable<Review> {
+    const url = `${this.apiUrl}/${review.id}`;
+    return this.httpClient.put<Review>(url, review, this.httpOptions);
+  }
+
+  deleteReview(review: Review): Observable<Review> {
+    const url = `${this.apiUrl}/${review.id}`;
+    return this.httpClient.delete<Review>(url, this.httpOptions);
   }
 }
