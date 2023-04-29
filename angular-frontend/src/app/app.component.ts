@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {UserInfo} from "./entities/user-info";
 import {Router} from "@angular/router";
+import {User} from "./entities/user";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = 'angular-frontend';
 
-  public static currentUser: UserInfo | undefined = undefined;
+  public static currentUser: User | undefined = undefined;
 
   constructor(private router: Router ) {
   }
@@ -34,7 +34,7 @@ export class AppComponent {
     }
   }
 
-  setUser(user: UserInfo) {
+  setUser(user: User) {
     AppComponent.currentUser = user;
     this.showView('main');
   }

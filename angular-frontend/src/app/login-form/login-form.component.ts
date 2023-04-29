@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit{
   onCloseLogin = new EventEmitter();
 
   @Output()
-  onSuccessfulLogin =  new EventEmitter<UserInfo>();
+  onSuccessfulLogin =  new EventEmitter<User>();
 
   constructor(private userService: UserService) {
   }
@@ -37,13 +37,12 @@ export class LoginFormComponent implements OnInit{
   }
 
   onLogin() {
-  console.log(this.selectedUser)
     if (this.selectedUser && this.password) {
       if (this.selectedUser.role === 'moderator' && this.password === 'admin') {
-        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser.username, this.selectedUser.role));
+        this.onSuccessfulLogin.emit(this.selectedUser);
         this.onCloseLogin.emit();
       } else if (this.selectedUser.role !== 'moderator' && this.password === '123') {
-        this.onSuccessfulLogin.emit(new UserInfo(this.selectedUser.username, this.selectedUser.role));
+        this.onSuccessfulLogin.emit(this.selectedUser);
         this.onCloseLogin.emit();
       }
     } else {

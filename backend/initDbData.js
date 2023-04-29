@@ -1,3 +1,8 @@
+const moderatorId = "";
+const reviewerId = "";
+const movieOneId = "";
+const movieTwoId = "";
+
 fetch('http://localhost:8080/users', {
     method: 'POST',
     body: JSON.stringify({
@@ -10,7 +15,8 @@ fetch('http://localhost:8080/users', {
 }).then(res => {
     return res.json()
 }).then((data) => {
-        console.log("Created user with name: " + data.username + " and role: " + data.role)
+    this.moderatorId = data.id
+    console.log("Created user with name: " + data.username + " and role: " + data.role)
     }
 ).catch(err => {
     console.log(err)
@@ -28,7 +34,8 @@ fetch('http://localhost:8080/users', {
 }).then(res => {
     return res.json()
 }).then((data) => {
-        console.log("Created user with name: " + data.username + " and role: " + data.role)
+    this.reviewerId = data.reviewerId
+    console.log("Created user with name: " + data.username + " and role: " + data.role)
     }
 ).catch(err => {
     console.log(err)

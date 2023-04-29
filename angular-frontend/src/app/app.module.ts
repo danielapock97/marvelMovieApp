@@ -25,6 +25,8 @@ import { ViewStartComponent } from './view-start/view-start.component';
 import { ViewAdminComponent } from './view-admin/view-admin.component';
 import { ViewDetailComponent } from './view-detail/view-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReviewListComponent } from './review-list/review-list.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     ViewMainComponent,
     ViewStartComponent,
     ViewAdminComponent,
-    ViewDetailComponent
+    ViewDetailComponent,
+    ReviewListComponent,
+    ReviewComponent
   ],
   imports: [
     FontAwesomeModule,
