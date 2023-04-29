@@ -9,14 +9,9 @@ exports.create = (req, res) => {
     return;
   }
 
+  console.log(req.body)
   // Create a Review
-  const review = new Review({
-    movieID: req.body.movieID,
-    userID: req.body.userID,
-    title: req.body.title,
-    description: req.body.description,
-    rating: req.body.rating
-  });
+  const review = new Review(req.body);
 
   // Save Review in the database
   review
@@ -35,7 +30,8 @@ exports.create = (req, res) => {
 // Retrieve all Reviews from the database.
 exports.findAll = (req, res) => {
 
-// hier fehlt noch die Anpassung, was passiert, wenn das Review nicht mehr exisitert oder vorher schon bearbeitet wurde.
+  req.params
+
   Review.find(condition)
     .then(data => {
       res.send(data);

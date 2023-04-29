@@ -47,6 +47,9 @@ exports.findAll = (req, res) => {
 // Find a single Movie with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
+  const userID = req.query.userId;
+  const movieID = req.query.movieID;
+  var condition = userID ? { userID: userID} : {};
 
   Movie.findById(id)
     .then(data => {

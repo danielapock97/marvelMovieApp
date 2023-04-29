@@ -1,8 +1,3 @@
-const moderatorId = "";
-const reviewerId = "";
-const movieOneId = "";
-const movieTwoId = "";
-
 fetch('http://localhost:8080/users', {
     method: 'POST',
     body: JSON.stringify({
