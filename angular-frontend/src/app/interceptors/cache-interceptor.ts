@@ -13,23 +13,25 @@ import {Observable, of, tap, share, catchError} from "rxjs";
 export class CachingInterceptor implements HttpInterceptor {
   private cache: Map<string, HttpResponse<any>> = new Map()
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-    if(req.method !== "GET" && (req.url.includes('/movies') || req.url.includes('/reviews'))) {
+    if(req.method !== "GET") {
       return next.handle(req)
     }
     const cachedResponse = this.cache.get(req.urlWithParams);
     if(cachedResponse) {
-
       return next.handle(req).pipe(
         catchError(event => {
           return of(cachedResponse.clone());
         })
       );
 
-    }else {
+    } else {
       return next.handle(req).pipe(
         tap(stateEvent => {
           if(stateEvent instanceof HttpResponse) {
-            this.cache.set(req.urlWithParams, stateEvent.clone())
+            if(req.url.includes('/movies') || req.url.includes('/reviews'))
+            {
+              this.cache.set(req.urlWithParams, stateEvent.clone());
+            }
           }
         }),
       share());
