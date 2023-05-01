@@ -1,6 +1,6 @@
 const db = require("../models");
 const Review = db.reviews;
-
+const url = require("url")
 // Create and Save a new Review
 exports.create = (req, res) => {
   // Validate request
@@ -48,21 +48,23 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-    // let updatedAt = req.query.updatedAt
-    // console.log(JSON.stringify(req.query))
-    // console.log(JSON.stringify(req.params))
+    console.log(JSON.stringify(req.query))
+    let lastUpdate = req.query.lastUpdate;
+    let lastUpdateDate = new Date(lastUpdate)
+    console.log(lastUpdateDate)
 
   Review.findById(id)
     .then(data => {
       if (!data) {
         res.status(404).send({ message: "Not found Review with id " + id });
       }
-      // else if (updatedAt.toString() === data.updatedAt.toString()) {
-      //     console.log(data.updatedAt.toString())
-      //     console.log("Conflict!")
-      //     return res.status(409).send({message: "Conflict."})
-      // }
+      else if (lastUpdateDate.toString() === data.updatedAt.toString()) {
+          console.log(data.updatedAt.toString())
+          console.log("Conflict!")
+          return res.status(409).send({message: "Conflict."})
+      }
       else {
+          console.log(data.updatedAt.toString())
           res.send(data);
       }
     })

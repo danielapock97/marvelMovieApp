@@ -23,7 +23,7 @@ export class ReviewListComponent implements OnInit{
   }
 
   getReviews() {
-    this.reviewService.getReviews(this.movieID, AppComponent.currentUser?.id).subscribe(
+    this.reviewService.getReviews(this.movieID).subscribe(
       res => {this.reviews = res;},
     error => alert(error.before)
     )

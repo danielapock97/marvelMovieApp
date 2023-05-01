@@ -26,17 +26,15 @@ export class ReviewService {
     this.apiUrl += "/reviews"
   }
 
-  getReviews(movieID: string, userID: string | undefined): Observable<Review[]> {
-    if (userID !== undefined) {
-      this.httpOptions.params.set('userID', userID)
-    }
-    this.httpOptions.params.set('movieID', movieID)
+  getReviews(movieID: string): Observable<Review[]> {
+    this.httpOptions.params = new HttpParams().set('movieID', movieID)
     return this.httpClient.get<Review[]>(this.apiUrl, this.httpOptions)
   }
 
-  getReviewById(id: string, updatedAt: string): Observable<Review> {
-    this.httpOptions.params.set('updatedAt', updatedAt)
-    console.log(this.httpOptions)
+  getReviewById(id: string, lastUpdate: string | undefined): Observable<Review> {
+    if (lastUpdate !== undefined) {
+      this.httpOptions.params = new HttpParams().set('lastUpdate', lastUpdate)
+    }
     return this.httpClient.get<Review>(this.apiUrl + "/" + id, this.httpOptions)
   }
 

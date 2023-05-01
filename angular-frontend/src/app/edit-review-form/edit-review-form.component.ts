@@ -10,7 +10,7 @@ import {AppComponent} from "../app.component";
   templateUrl: './edit-review-form.component.html',
   styleUrls: ['./edit-review-form.component.scss']
 })
-export class EditReviewFormComponent implements OnInit{
+export class EditReviewFormComponent implements OnInit {
 
   public currentReview!: Review;
 
@@ -77,17 +77,16 @@ export class EditReviewFormComponent implements OnInit{
             } else {
               this.router.navigate(["details/" + this.currentReview.movieID]);
             }
-          },
-          error => {
-            if (error.state === 409) {
-              if (confirm("Konflikt: Das Review wurde kürzlich bearbeitet. Bitte bearbeite es erneut, wenn du deine Änderungen speichern möchtest.")) {
-                this.router.navigate(["details/" + this.currentReview.movieID]);
-              } else {
-                this.router.navigate(["details/" + this.currentReview.movieID]);
-              }
-            }
+          })
+      },
+      error => {
+        if (error.status === 409) {
+          if (confirm("Konflikt: Das Review wurde kürzlich bearbeitet. Bitte bearbeite es erneut, wenn du deine Änderungen speichern möchtest.")) {
+            this.router.navigate(["details/" + this.currentReview.movieID]);
+          } else {
+            this.router.navigate(["details/" + this.currentReview.movieID]);
           }
-        )
+        }
       }
     )
   }
