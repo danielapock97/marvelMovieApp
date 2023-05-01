@@ -11,7 +11,6 @@
       <button *ngIf="currentUser"  mat-menu-item  (click)="switchView('start')">Start</button>
       <button *ngIf="currentUser "  mat-menu-item  (click)="switchView('main')">Main</button>
       <button *ngIf="currentUser && currentUser.role === 'admin'"  mat-menu-item  (click)="switchView('admin')">Admin</button>
-      <button *ngIf="currentUser"  mat-menu-item  (click)="switchView('profile')">Profile</button>
       <button *ngIf="currentUser"  mat-menu-item  (click)="logoutUser()">Logout</button>
     </mat-menu>
   </div>

@@ -1,3 +1,7 @@
+<button mat-button routerLinkActive="active" routerLink="/reviews/{{movieID}}">Review hinzufügen</button>
+<mat-divider></mat-divider>
+
 <div *ngFor="let review of reviews">
-  <app-review [review]="review"></app-review>
+  <app-review [review]="review" (onDelete)="deleteReview(review)"></app-review>
+  <mat-divider></mat-divider>
 </div>

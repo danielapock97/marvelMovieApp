@@ -7,11 +7,12 @@ import {Movie} from "../entities/movie";
   providedIn: 'root'
 })
 export class MovieService {
-  private apiUrl = 'http://10.0.2.2:8080/moviess'
+  private apiUrl = 'http://10.0.2.2:8080/movies'
 
   private httpOptions = {
     headers: new HttpHeaders({
       'Accept': '**/**',
+      'Content-Type': 'application/json',
     }),
   };
   constructor(private httpClient: HttpClient) {

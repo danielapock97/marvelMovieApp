@@ -9,14 +9,14 @@ exports.create = (req, res) => {
     return;
   }
 
-  console.log(req.body)
+  console.log(JSON.stringify(req.body))
   // Create a Review
   const review = new Review(req.body);
 
   // Save Review in the database
   review
-    .save(review)
-    .then(data => {
+      .save(review)
+      .then(data => {
       res.send(data);
     })
     .catch(err => {
@@ -29,8 +29,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Reviews from the database.
 exports.findAll = (req, res) => {
-
-  req.params
+  let movieID = req.query.movieID
+  var condition = movieID ? {movieID: movieID} : {};
 
   Review.find(condition)
     .then(data => {
@@ -48,11 +48,22 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
+    let updatedAt = req.query.updatedAt
+    console.log(JSON.stringify(req.query))
+    console.log(JSON.stringify(req.params))
+
   Review.findById(id)
     .then(data => {
-      if (!data)
+      if (!data) {
         res.status(404).send({ message: "Not found Review with id " + id });
-      else res.send(data);
+      }
+      else if (updatedAt.toString() === data.updatedAt.toString()) {
+          console.log(data.updatedAt.toString())
+          console.log("Conflict!")
+          return res.status(409).send({message: "Conflict."})
+      } else {
+          res.send(data);
+      }
     })
     .catch(err => {
       res
@@ -72,19 +83,17 @@ exports.update = (req, res) => {
   const id = req.params.id;
 
   Review.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then(data => {
-      if (!data) {
-        res.status(404).send({
-          message: `Cannot update Review with id=${id}. Maybe Review was not found!`
-        });
-      } else
-      if (updatedAt !== (new Date(data.updatedAt))) {
-        res.status(409).send({message: "Conflict."})
-      } else {
-        res.status(200).send({ message: "Review was updated successfully." });
-      }
-    })
-    .catch(err => {
+      .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot update Review with id=${id}. Maybe Review was not found!`
+          });
+        } else {
+          res.status(200).send({message: "Review was updated successfully."});
+        }
+
+      })
+      .catch(err => {
       res.status(500).send({
         message: "Error updating Review with id=" + id
       });

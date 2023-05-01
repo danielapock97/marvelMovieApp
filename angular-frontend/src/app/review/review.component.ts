@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Review} from "../entities/review";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-review',
@@ -8,6 +9,7 @@ import {Review} from "../entities/review";
 })
 export class ReviewComponent implements OnInit{
   @Input() review!: Review
+  @Output() onDelete: EventEmitter<Review> = new EventEmitter<Review>()
   stars: string[] = [];
 
   ngOnInit() {
@@ -18,5 +20,22 @@ export class ReviewComponent implements OnInit{
     const starsCount = Math.round(rating);
     console.log(starsCount)
     this.stars =  Array(starsCount).fill('star');
+  }
+
+  showEditButton(): boolean
+  {
+    let result = true;
+    if (AppComponent.currentUser?.role === "moderator") {
+      result = false;
+    } else if (AppComponent.currentUser?.id === this.review.userID) {
+      result = false
+    }
+    return result;
+  }
+
+  delete(review: Review) {
+    if (confirm("Willst du dieses Review wirklich löschen?")) {
+      this.onDelete.emit(review)
+    }
   }
 }

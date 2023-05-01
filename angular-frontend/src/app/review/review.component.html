@@ -5,4 +5,6 @@
   <div mat-list-avatar>
     <fa-icon *ngFor="let star of stars" [icon]="['fas', 'star']"></fa-icon>
   </div>
+  <button mat-button [hidden]="showEditButton()" routerLinkActive="active" routerLink="/edit/{{review.id}}">Bearbeiten</button>
+  <button mat-button [hidden]="showEditButton()" (click)="delete(review)">Löschen</button>
 </div>

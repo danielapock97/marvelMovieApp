@@ -1,7 +1,6 @@
 const dbConfig = require("../config/db.config.js");
 
 const mongoose = require("mongoose");
-var cryptoJS = require("crypto-js");
 
 mongoose.Promise = global.Promise;
 

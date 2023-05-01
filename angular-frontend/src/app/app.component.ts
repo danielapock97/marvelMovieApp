@@ -47,4 +47,5 @@ export class AppComponent {
     AppComponent.currentUser = undefined;
     this.showView('start');
   }
+
 }

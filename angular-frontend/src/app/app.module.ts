@@ -28,7 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ReviewComponent } from './review/review.component';
 import {httpInterceptorProviders} from "./interceptors";
-
+import { ReviewFormComponent } from './review-form/review-form.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import {MatRadioModule} from "@angular/material/radio";
+import { EditReviewFormComponent } from './edit-review-form/edit-review-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,9 @@ import {httpInterceptorProviders} from "./interceptors";
     ViewAdminComponent,
     ViewDetailComponent,
     ReviewListComponent,
-    ReviewComponent
+    ReviewComponent,
+    ReviewFormComponent,
+    EditReviewFormComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -59,7 +65,13 @@ import {httpInterceptorProviders} from "./interceptors";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [ httpInterceptorProviders ],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
+const {query} = require("express");
 module.exports = app => {
   const review = require("../controllers/review.controller.js");
 
   var router = require("express").Router();
-
   // Create a new Tutorial
   router.post("/", review.create);
 

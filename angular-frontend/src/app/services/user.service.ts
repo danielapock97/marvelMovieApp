@@ -12,11 +12,12 @@ export class UserService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Accept': '**/**',
+      'Content-Type': 'application/json',
     }),
   };
   constructor(private httpClient: HttpClient) {
     if (navigator.userAgent.includes("Android")) {
-      this.apiUrl = "http://10.0.2.2.116:8080"
+      this.apiUrl = "http://10.0.2.2:8080"
     } else {
       this.apiUrl = "http://localhost:8080"
     }
