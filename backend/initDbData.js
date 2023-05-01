@@ -36,6 +36,25 @@ fetch('http://localhost:8080/users', {
     console.log(err)
 })
 
+fetch('http://localhost:8080/users', {
+    method: 'POST',
+    body: JSON.stringify({
+        username: "Reviewer Steeeve",
+        role: "user"
+    }),
+    headers: {
+        "Content-type": "application/json"
+    }
+}).then(res => {
+    return res.json()
+}).then((data) => {
+        this.reviewerId = data.reviewerId
+        console.log("Created user with name: " + data.username + " and role: " + data.role)
+    }
+).catch(err => {
+    console.log(err)
+})
+
 fetch('http://localhost:8080/movies', {
     method: 'POST',
     body: JSON.stringify({

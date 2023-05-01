@@ -58,7 +58,7 @@ exports.findOne = (req, res) => {
       if (!data) {
         res.status(404).send({ message: "Not found Review with id " + id });
       }
-      else if (lastUpdateDate.toString() !== data.updatedAt.toString()) {
+      else if (lastUpdateDate.toString() !== data.updatedAt.toString() && lastUpdate !== "") {
           console.log(data.updatedAt.toString())
           console.log("Conflict!")
           return res.status(409).send({message: "Conflict."})
