@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="ReviewForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>ID</mat-label>
+        <input matInput style="color: grey" [readonly]="true" hidden formControlName="id">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Film ID</mat-label>
+        <input matInput style="color: grey" [readonly]="true" formControlName="movieID">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Benutzer ID</mat-label>
+        <input matInput style="color: grey" [readonly]="true" formControlName="userID">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Titel</mat-label>
+        <input matInput placeholder="Titel einfügen" formControlName="title">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Beschreibung</mat-label>
+        <input matInput placeholder="Beschreibung einfügen" formControlName="description">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Sternebewertung</mat-label>
+        <input matInput placeholder="Eine Sternebewertung von 1-5" formControlName="rating">
+      </mat-form-field>
+      <mat-error *ngIf="ReviewForm.invalid">Bitte gib eine Bewertung zwischen 1 und 5 ein.</mat-error>
+    </p>
+    <button mat-button type="submit" [disabled]="!ReviewForm.valid">Speichern</button>
+    <button mat-button routerLinkActive="active" routerLink="/details/{{ReviewForm.value.movieID}}">Abbrechen</button>
+  </form>
+</div>
