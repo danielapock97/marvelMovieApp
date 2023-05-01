@@ -27,6 +27,7 @@ import { ViewDetailComponent } from './view-detail/view-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ReviewComponent } from './review/review.component';
+import {httpInterceptorProviders} from "./interceptors";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { ReviewComponent } from './review/review.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ httpInterceptorProviders ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
