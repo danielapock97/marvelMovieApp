@@ -48,20 +48,21 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-    let updatedAt = req.query.updatedAt
-    console.log(JSON.stringify(req.query))
-    console.log(JSON.stringify(req.params))
+    // let updatedAt = req.query.updatedAt
+    // console.log(JSON.stringify(req.query))
+    // console.log(JSON.stringify(req.params))
 
   Review.findById(id)
     .then(data => {
       if (!data) {
         res.status(404).send({ message: "Not found Review with id " + id });
       }
-      else if (updatedAt.toString() === data.updatedAt.toString()) {
-          console.log(data.updatedAt.toString())
-          console.log("Conflict!")
-          return res.status(409).send({message: "Conflict."})
-      } else {
+      // else if (updatedAt.toString() === data.updatedAt.toString()) {
+      //     console.log(data.updatedAt.toString())
+      //     console.log("Conflict!")
+      //     return res.status(409).send({message: "Conflict."})
+      // }
+      else {
           res.send(data);
       }
     })
